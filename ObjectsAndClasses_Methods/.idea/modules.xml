@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ObjectsAndClasses_Methods.iml" filepath="$PROJECT_DIR$/.idea/ObjectsAndClasses_Methods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ObjectsAndClasses_Methods.iml" filepath="$PROJECT_DIR$/ObjectsAndClasses_Methods.iml" />
     </modules>
   </component>
 </project>

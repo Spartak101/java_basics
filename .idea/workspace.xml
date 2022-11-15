@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fbbe1f1-d206-47c0-bd80-d717304ae367" name="Changes" comment="Practical work 2">
-      <change afterPath="$PROJECT_DIR$/Arithmetic/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Arithmetic/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Arithmetic/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Arithmetic/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Arithmetic/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Arithmetic/Arithmetic.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arithmetic" beforeDir="false" afterPath="$PROJECT_DIR$/Arithmetic" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/src/Arithmetic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/src/Basket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/Encapsulation" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/Encapsulation" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/Encapsulation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/Encapsulation/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +18,7 @@
         <option name="title" value="All" />
       </GitPushTagMode>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/ObjectsAndClasses_Methods/Encapsulation" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -46,7 +33,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/z/Desktop/Домашки/Тестирование веб-приложений/Программирование/java_basics"
+    "last_opened_file_path": "C:/Users/z/Desktop/Домашки/Тестирование веб-приложений/Программирование/java_basics/ObjectsAndClasses_Encapsulation"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -65,7 +52,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668420323971</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Practical work 2">
+      <created>1668524958128</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668524958128</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

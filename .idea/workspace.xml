@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fbbe1f1-d206-47c0-bd80-d717304ae367" name="Changes" comment="restart 2">
+    <list default="true" id="5fbbe1f1-d206-47c0-bd80-d717304ae367" name="Changes" comment="Practical work 2">
       <change afterPath="$PROJECT_DIR$/Arithmetic/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Arithmetic/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Arithmetic/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Arithmetic/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Arithmetic/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Arithmetic/Arithmetic.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/ObjectsAndClasses_Methods.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arithmetic" beforeDir="false" afterPath="$PROJECT_DIR$/Arithmetic" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/src/Arithmetic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/src/Basket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/src/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +46,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/z/Desktop/Домашки/Тестирование веб-приложений/Программирование/java_basics/ObjectsAndClasses_Methods"
+    "last_opened_file_path": "C:/Users/z/Desktop/Домашки/Тестирование веб-приложений/Программирование/java_basics"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -72,7 +73,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -80,6 +93,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="restart 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="restart 2" />
+    <MESSAGE value="Practical work 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Practical work 2" />
   </component>
 </project>

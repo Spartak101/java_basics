@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33e01d53-2bbe-448a-b28f-52a574374589" name="Changes" comment="Practical work 2 attempt 3">
+    <list default="true" id="33e01d53-2bbe-448a-b28f-52a574374589" name="Changes" comment="Practical work 2 attempt 4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dimensions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dimensions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Order.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

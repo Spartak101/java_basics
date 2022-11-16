@@ -10,19 +10,17 @@ public class Main {
         }
     }*/
 
-        Order original = new Order(1500, "Морская 15", true, "sdf3153121", true);
-        Dimensions dimensions = new Dimensions(2.5, 2.8, 2.7);
-        dimensions.setDimensionsHeight(1.5);
-        System.out.println(dimensions);
-        dimensions.dimensionsPrint();
+        Order original = new Order(new Dimensions(2.5, 2.8, 2.7),
+                1500, "Морская 15", true, "sdf3153121", true);
         System.out.println(original);
-        Order copy = new Order(original.getMass(), original.getDeliveryAddress(), original.isFlipOver(), original.getRegistrationNumber(), original.isFragile());
-        copy.setMass(2500);
-        copy.setDeliveryAddress("Туманная 2");
-        copy.setRegistrationNumber("QWDS4165168");
-        copy.setFlipOver(false);
-        copy.setFragile(false);
-        copy.print();
+        Order newOrder = original.setDeliveryAddress("Туманная 2");
+        System.out.println(newOrder);
+        original.setDimensionsWidth(1.5);
+        original.setRegistrationNumber("ASDFQW98098");
+        original.setMass(2500);
+        original.print();
+        System.out.println(original);
+        System.out.println(newOrder);
 
     }
 }

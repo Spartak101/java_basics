@@ -22,19 +22,19 @@ public class Dimensions {
     }
 
     public double getDimensionsHeight() {
-        return dimensionsHeight;
+        return dimensionsHeight2;
     }
 
     public double getDimensionsWidth() {
-        return dimensionsWidth;
+        return dimensionsWidth2;
     }
 
     public double getDimensionsLong() {
-        return dimensionsLong;
+        return dimensionsLong2;
     }
 
     public double getVolume() {
-        return volume;
+        return volume2;
     }
 
     public Dimensions setDimensionsHeight(double dimensionsHeight) {
@@ -71,4 +71,3 @@ public class Dimensions {
                 "Объём: " + volume2 + " м3");
     }
 }
-

@@ -21,9 +21,9 @@ public class Order {
 
     public Order(Dimensions dimensions, int mass, String deliveryAddress, boolean flipOver, String registrationNumber, boolean fragile) {
         this.dimensions = dimensions;
-        dimensionsHeight = dimensions.getDimensionsHeight();
+/*        dimensionsHeight = dimensions.getDimensionsHeight();
         dimensionsWidth = dimensions.getDimensionsHeight();
-        dimensionsLong = dimensions.getDimensionsLong();
+        dimensionsLong = dimensions.getDimensionsLong();*/
         volume = dimensions.getVolume();
         this.mass = mass;
         this.deliveryAddress = deliveryAddress;
@@ -118,6 +118,9 @@ public class Order {
                 dimensions;
     }
 
+/*    public Dimensions getDimensions() {
+        return dimensions;
+    }*/
 
     public double getDimensionsHeight() {
         return dimensionsHeight = dimensions.getDimensionsHeight();

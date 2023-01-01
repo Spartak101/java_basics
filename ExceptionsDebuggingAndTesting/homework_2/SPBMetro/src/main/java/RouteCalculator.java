@@ -84,6 +84,7 @@ public class RouteCalculator {
 
         List<Station> fromLineStations = from.getLine().getStations();
         List<Station> toLineStations = to.getLine().getStations();
+
         for (Station srcStation : fromLineStations) {
             for (Station dstStation : toLineStations) {
                 if (isConnected(srcStation, dstStation)) {
@@ -96,6 +97,9 @@ public class RouteCalculator {
                     }
                 }
             }
+        }
+        if (route.isEmpty()) {
+            return null;
         }
         return route;
     }

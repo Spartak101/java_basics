@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fbbe1f1-d206-47c0-bd80-d717304ae367" name="Changes" comment="Practical work 2 attempt 4">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Encapsulation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectsAndClasses_Encapsulation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Encapsulation/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectsAndClasses_Encapsulation/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/Encapsulation" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/Encapsulation" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/Encapsulation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/Encapsulation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ObjectsAndClasses_Methods/ObjectsAndClasses_Methods.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectsAndClasses_Methods/ObjectsAndClasses_Methods.iml" afterDir="false" />
-    </list>
+    <list default="true" id="5fbbe1f1-d206-47c0-bd80-d717304ae367" name="Changes" comment="Practical work 2 attempt 4" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="PUSH_TAGS">
@@ -26,6 +22,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectId" id="2HWyaAw1LepMC9JUeP1YYsZagl8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -36,7 +35,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/z/Desktop/Домашки/Тестирование веб-приложений/Программирование/java_basics/ObjectsAndClasses_StaticFinal"
+    "last_opened_file_path": "C:/Users/z/Desktop/Java/java_basics/SQLAndHibernate"
   }
 }]]></component>
   <component name="RunManager">

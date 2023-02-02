@@ -7,6 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import javax.persistence.Query;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,18 +19,18 @@ public class Main {
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-/*        List<PurchaseList> pur = session.createQuery("From PurchaseList").getResultList();
+        List<PurchaseList> pur = session.createQuery("From PurchaseList").getResultList();
         List<Student> stu = session.createQuery("From " + Student.class.getSimpleName()).getResultList();
         List<Course> cou = session.createQuery("From " + Course.class.getSimpleName()).getResultList();
 
         for (PurchaseList p : pur){
             Student student = stu.stream().filter(s -> s.getName().equals(p.getStudentName())).findFirst().get();
             Course course = cou.stream().filter(c -> c.getName().equals(p.getCourseName())).findFirst().get();
-            LinkedPurchaseList linkedPurchaseList = new LinkedPurchaseList(new LinkedPurchaseListKey(student.getId(), course.getId()));
+            LinkedPurchaseList linkedPurchaseList = new LinkedPurchaseList(student.getId(), course.getId());
             session.save(linkedPurchaseList);
-        }*/
+        }
 
-        String hql = "CREATE TABLE my_base.LinkedPurchaseList ( UNIQUE KEY `unq` (`student_id`,`course_id`),\n" +
+ /*       String hql = "CREATE TABLE my_base.LinkedPurchaseList ( UNIQUE KEY `unq` (`student_id`,`course_id`),\n" +
                 "  KEY `course_idx` (`course_id`)) AS \n" +
                 "SELECT my_base.students.id AS student_id, my_base.courses.id AS course_id\n" +
                 "FROM my_base.courses\n" +
@@ -38,7 +39,7 @@ public class Main {
                 "JOIN my_base.students\n" +
                 "ON my_base.purchaselist.student_name = my_base.students.name";
         Query query = session.createSQLQuery(hql);
-        query.executeUpdate();
+        query.executeUpdate();*/
 
 
         transaction.commit();

@@ -10,12 +10,14 @@ public class LinkedPurchaseListKey implements Serializable {
     @Column(name = "course_id", insertable = false, updatable = false, nullable = false, length = 150)
     private Integer courseId;
 
+
     public LinkedPurchaseListKey() {
     }
 
-    public LinkedPurchaseListKey(Integer id, int id1) {
+    public LinkedPurchaseListKey(Integer studentId, Integer courseId) {
+        this.studentId = studentId;
+        this.courseId = courseId;
     }
-
 
     public Integer getStudentId() {
         return studentId;

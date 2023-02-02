@@ -6,7 +6,7 @@ import java.util.Objects;
 public class LinkedPurchaseList {
 
     @EmbeddedId
-    private LinkedPurchaseListKey id;
+    private LinkedPurchaseListKey linkedPurchaseListKey;
 
     @Column(name = "student_id", insertable = false, updatable = false)
     private Integer studentId;
@@ -14,20 +14,21 @@ public class LinkedPurchaseList {
     @Column(name = "course_id", insertable = false, updatable = false)
     private Integer courseId;
 
-
     public LinkedPurchaseList() {
     }
 
-    public LinkedPurchaseList(LinkedPurchaseListKey linkedPurchaseListKey) {
+    public LinkedPurchaseList(Integer studentId, Integer courseId) {
+        this.studentId = studentId;
+        this.courseId = courseId;
+        this.linkedPurchaseListKey = new LinkedPurchaseListKey(studentId, courseId);
     }
 
-
-    public LinkedPurchaseListKey getId() {
-        return id;
+    public LinkedPurchaseListKey getlinkedPurchaseListKey() {
+        return linkedPurchaseListKey;
     }
 
-    public void setId(LinkedPurchaseListKey id) {
-        this.id = id;
+    public void setlinkedPurchaseListKey(LinkedPurchaseListKey linkedPurchaseListKey) {
+        this.linkedPurchaseListKey = linkedPurchaseListKey;
     }
 
     public Integer getStudentId() {

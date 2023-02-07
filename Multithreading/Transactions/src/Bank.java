@@ -4,12 +4,11 @@ import java.util.concurrent.atomic.AtomicLong;
 public class Bank {
 
     private TreeMap<String, Account> accounts = new TreeMap<>();
-    private TreeMap<String, Account> bloc = new TreeMap<>();
     private ArrayList<String> arrayKeys = new ArrayList<>();
 
     private long allMoney = 0;
-    private long allMoneyOpen = 0;
-    private long allMoneyBloc = 0;
+
+    private int thread;
     private long fraudSum = 50_000L;
     private final Random random = new Random();
 
@@ -33,19 +32,14 @@ public class Bank {
      * метод isFraud. Если возвращается true, то делается блокировка счетов (как – на ваше
      * усмотрение)
      */
-    public void transfer(String fromAccountNum, String toAccountNum, long amount) throws InterruptedException {
-        if (bloc.containsKey(fromAccountNum) == true) {
-            System.out.println("Счёт заблокирован службой безопасности банка");
-            return;
-        }
+    public void transfer(String fromAccountNum, String toAccountNum, long amount, int thread) throws InterruptedException {
+        this.thread = thread;
+
         if (accounts.containsKey(fromAccountNum) == false) {
             System.out.println("Счёт не обнаружен");
             return;
         }
-        if (bloc.containsKey(toAccountNum) == true) {
-            System.out.println("Счёт получателя заблокирован службой безопасности банка");
-            return;
-        }
+
         if (accounts.containsKey(fromAccountNum) == false) {
             System.out.println("Счёт получателя не обнаружен");
             return;
@@ -56,57 +50,55 @@ public class Bank {
             blocTransfer = isFraud(fromAccountNum, toAccountNum, amount);
         }
         if (blocTransfer == true) {
-            blocAccounts(fromAccountNum, toAccountNum);
+            blocAccounts(fromAccountNum, toAccountNum, thread);
             return;
         }
-        if (accounts.get(fromAccountNum).getMoney() >= amount) {
-            transaction(fromAccountNum, toAccountNum, amount);
+        if (getBalance(fromAccountNum) >= amount) {
+            transaction(fromAccountNum, toAccountNum, amount, thread);
         } else {
-            System.out.println("На вашем счёте недостаточно средств");
+            System.out.println("На вашем счёте недостаточно средств" + "  Thread " + thread);
         }
-        long after = allMoneyOpen + allMoneyBloc;
-        if (allMoney != after) {
-            System.out.println("Караул! Куда-то делись деньги!");
+        AtomicLong after = new AtomicLong();
+        accounts.forEach((s, account) -> after.addAndGet(account.getMoney()));
+        if (allMoney != after.get()) {
+            System.out.println("Караул! Куда-то делись деньги!" + "  Thread " + thread);
         }
     }
 
-    private synchronized void transaction(String fromAccountNum, String toAccountNum, long amount) {
-        accounts.get(fromAccountNum).setMoney(accounts.get(fromAccountNum).getMoney() - amount);
-        accounts.get(toAccountNum).setMoney(accounts.get(toAccountNum).getMoney() + amount);
+    private void transaction(String fromAccountNum, String toAccountNum, long amount, int thread) {
+        synchronized (accounts.get(fromAccountNum)) {
+            synchronized (accounts.get(toAccountNum)) {
+                System.out.println("Транзакция начата" + "  Thread " + thread);
+                if (!accounts.get(fromAccountNum).isBloc() && !accounts.get(toAccountNum).isBloc()) {
+                    accounts.get(fromAccountNum).setMoney(accounts.get(fromAccountNum).getMoney() - amount);
+                    accounts.get(toAccountNum).setMoney(accounts.get(toAccountNum).getMoney() + amount);
+                } else {
+                    System.out.println("Один из счетов блокирован службой безопасности банка" + "  Thread " + thread);
+                }
+                System.out.println("Транзакция завершена" + "  Thread " + thread);
+            }
+        }
     }
 
-    private synchronized void blocAccounts(String fromAccountNum, String toAccountNum) {
-        bloc.put(fromAccountNum, accounts.get(fromAccountNum));
-        bloc.put(toAccountNum, accounts.get(toAccountNum));
-        accounts.remove(fromAccountNum);
-        accounts.remove(toAccountNum);
-        long moneyBlocAmount = bloc.get(fromAccountNum).getMoney() + bloc.get(toAccountNum).getMoney();
-        allMoneyOpen -= moneyBlocAmount;
-        allMoneyBloc += moneyBlocAmount;
-        System.out.println("Операция заблокирована службой безопасности банка");
+    private void blocAccounts(String fromAccountNum, String toAccountNum, int thread) {
+        synchronized (accounts.get(fromAccountNum)) {
+            synchronized (accounts.get(toAccountNum)) {
+                System.out.println("Блокировка начата" + "  Thread " + thread);
+                accounts.get(fromAccountNum).setBloc(true);
+                accounts.get(toAccountNum).setBloc(true);
+                System.out.println("Блокировка завершена" + "  Thread " + thread);
+            }
+        }
     }
 
     /**
      * TODO: реализовать метод. Возвращает остаток на счёте.
      */
-    public long getBalance(String accountNum) {
+    public synchronized long getBalance(String accountNum) {
         Account a = accounts.get(accountNum);
         return a.getMoney();
     }
 
- /*   public synchronized long getSumAllAccounts() {
-        AtomicLong sum = new AtomicLong();
-        ArrayList<Account> v = new ArrayList<>(accounts.values());
-        v.forEach(s -> sum.addAndGet(s.getMoney()));
-        return sum.get();
-    }
-
-    public synchronized long getSumAllBlocAccounts() {
-        AtomicLong sumBloc = new AtomicLong();
-        ArrayList<Account> v = new ArrayList<>(bloc.values());
-        v.forEach(s -> sumBloc.addAndGet(s.getMoney()));
-        return sumBloc.get();
-    }*/
 
     public void accountsGenerated() {
         int countAccounts = 1000;
@@ -125,6 +117,5 @@ public class Bank {
                 countAccounts++;
             }
         }
-        allMoneyOpen = allMoney;
     }
 }

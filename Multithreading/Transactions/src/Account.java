@@ -3,6 +3,7 @@ import java.util.Objects;
 public class Account {
 
     private long money;
+    private boolean bloc = false;
     private String accNumber;
 
     public Account(long money, String accNumber) {
@@ -26,7 +27,13 @@ public class Account {
         this.accNumber = accNumber;
     }
 
+    public boolean isBloc() {
+        return bloc;
+    }
 
+    public void setBloc(boolean bloc) {
+        this.bloc = bloc;
+    }
 
     @Override
     public boolean equals(Object o) {

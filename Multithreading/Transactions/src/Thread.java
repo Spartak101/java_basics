@@ -14,23 +14,27 @@ public class Thread extends java.lang.Thread {
 
     @Override
     public void run() {
+        System.out.println("___________________________Поток " + thread + " открыт");
+        int countUpdate = 0;
         try {
             for (int i = 0; i < countTransactions; i++) {
-                long amount = random.nextLong(0, 51000);
+                long amount = random.nextLong(0, 55000);
                 String a = bank.getArrayKeys().get(random.nextInt(bank.getArrayKeys().size()));
                 String b = bank.getArrayKeys().get(random.nextInt(bank.getArrayKeys().size()));
                 if (a.equals(b)) {
-                    countTransactions++;
+                    i--;
+                    countUpdate++;
                     System.out.println("____________________countTransactions");
                     continue;
                 }
-                bank.transfer(a, b, amount);
+                bank.transfer(a, b, amount, thread);
                 System.out.println(i);
                 AllTransactionsCount.incrementInteger();
-                System.out.println(AllTransactionsCount.getInteger() + " Thread: " + thread);
+                System.out.println(AllTransactionsCount.getInteger() + " Thread: " + thread + "    CountUpdate: " + countUpdate);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        System.out.println("___________________________Поток " + thread + " закрыт");
     }
 }

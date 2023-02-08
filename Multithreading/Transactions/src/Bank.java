@@ -35,16 +35,6 @@ public class Bank {
     public void transfer(String fromAccountNum, String toAccountNum, long amount, int thread) throws InterruptedException {
         this.thread = thread;
 
-        if (accounts.containsKey(fromAccountNum) == false) {
-            System.out.println("Счёт не обнаружен");
-            return;
-        }
-
-        if (accounts.containsKey(fromAccountNum) == false) {
-            System.out.println("Счёт получателя не обнаружен");
-            return;
-        }
-
         boolean blocTransfer = false;
         if (amount > fraudSum) {
             blocTransfer = isFraud(fromAccountNum, toAccountNum, amount);
@@ -58,16 +48,26 @@ public class Bank {
         } else {
             System.out.println("На вашем счёте недостаточно средств" + "  Thread " + thread);
         }
+    }
+
+    public synchronized AtomicLong getAllMoney() {
         AtomicLong after = new AtomicLong();
         accounts.forEach((s, account) -> after.addAndGet(account.getMoney()));
-        if (allMoney != after.get()) {
-            System.out.println("Караул! Куда-то делись деньги!" + "  Thread " + thread);
-        }
+        return after;
     }
 
     private void transaction(String fromAccountNum, String toAccountNum, long amount, int thread) {
-        synchronized (accounts.get(fromAccountNum)) {
-            synchronized (accounts.get(toAccountNum)) {
+        Account firstAccount;
+        Account secondAccount;
+        if (Long.valueOf(fromAccountNum) > Long.valueOf(toAccountNum)){
+            firstAccount = accounts.get(fromAccountNum);
+            secondAccount = accounts.get(toAccountNum);
+        } else {
+            firstAccount = accounts.get(toAccountNum);
+            secondAccount = accounts.get(fromAccountNum);
+        }
+        synchronized (firstAccount) {
+            synchronized (secondAccount) {
                 System.out.println("Транзакция начата" + "  Thread " + thread);
                 if (!accounts.get(fromAccountNum).isBloc() && !accounts.get(toAccountNum).isBloc()) {
                     accounts.get(fromAccountNum).setMoney(accounts.get(fromAccountNum).getMoney() - amount);
@@ -81,8 +81,17 @@ public class Bank {
     }
 
     private void blocAccounts(String fromAccountNum, String toAccountNum, int thread) {
-        synchronized (accounts.get(fromAccountNum)) {
-            synchronized (accounts.get(toAccountNum)) {
+        Account firstAccount;
+        Account secondAccount;
+        if (Long.valueOf(fromAccountNum) > Long.valueOf(toAccountNum)){
+            firstAccount = accounts.get(fromAccountNum);
+            secondAccount = accounts.get(toAccountNum);
+        } else {
+            firstAccount = accounts.get(toAccountNum);
+            secondAccount = accounts.get(fromAccountNum);
+        }
+        synchronized (firstAccount) {
+            synchronized (secondAccount) {
                 System.out.println("Блокировка начата" + "  Thread " + thread);
                 accounts.get(fromAccountNum).setBloc(true);
                 accounts.get(toAccountNum).setBloc(true);
@@ -106,7 +115,7 @@ public class Bank {
             long money = random.nextLong(0, 1_000_000);
             allMoney += money;
             String accNumber = "";
-            for (int j = 0; j < 20; j++) {
+            for (int j = 0; j < 10; j++) {
                 accNumber += random.nextInt(0, 9);
             }
             Account account = new Account(money, accNumber);

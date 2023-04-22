@@ -1,41 +1,36 @@
 import java.io.FileOutputStream;
+import java.io.PrintWriter;
+import java.util.concurrent.ForkJoinPool;
 
 public class Loader {
 
     public static void main(String[] args) throws Exception {
         long start = System.currentTimeMillis();
-
-        FileOutputStream writer = new FileOutputStream("res/numbers.txt");
-
+        PrintWriter writerEven = new PrintWriter("res/evenNumbers.txt");
+        PrintWriter writerOdd = new PrintWriter("res/oddNumbers.txt");
+        StringBuilder builder = new StringBuilder();
         char letters[] = {'У', 'К', 'Е', 'Н', 'Х', 'В', 'А', 'Р', 'О', 'С', 'М', 'Т'};
-        for (int number = 1; number < 1000; number++) {
-            int regionCode = 199;
-            for (char firstLetter : letters) {
-                for (char secondLetter : letters) {
-                    for (char thirdLetter : letters) {
-                        String carNumber = firstLetter + padNumber(number, 3) +
-                            secondLetter + thirdLetter + padNumber(regionCode, 2);
-                        writer.write(carNumber.getBytes());
-                        writer.write('\n');
-                    }
-                }
-            }
-        }
+        EvenWriter evenWriter = new EvenWriter(builder, letters, writerEven, start);
+        evenWriter.start();
+        OddWriter oddWriter = new OddWriter(builder, letters, writerOdd, start);
+        oddWriter.start();
 
-        writer.flush();
-        writer.close();
+        writerEven.flush();
+        writerOdd.flush();
+        writerEven.close();
+        writerOdd.flush();
 
-        System.out.println((System.currentTimeMillis() - start) + " ms");
+/*        System.out.println((System.currentTimeMillis() - start) + " ms");*/
     }
 
-    private static String padNumber(int number, int numberLength) {
-        String numberStr = Integer.toString(number);
+    public static String padNumber(int number, int numberLength) {
+        StringBuilder numberStr = new StringBuilder(Integer.toString(number));
         int padSize = numberLength - numberStr.length();
 
         for (int i = 0; i < padSize; i++) {
-            numberStr = '0' + numberStr;
+            numberStr.append("0");
         }
 
-        return numberStr;
+        return String.valueOf(numberStr);
     }
 }

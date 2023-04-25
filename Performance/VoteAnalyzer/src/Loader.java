@@ -5,6 +5,8 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,24 +21,17 @@ public class Loader {
     private static HashMap<Voter, Integer> voterCounts = new HashMap<>();
 
     public static void main(String[] args) throws Exception {
-        String fileName = "res/data-1M.xml";
+        String fileName = "res/data-1572M.xml";
 
-        parseFile(fileName);
+/*        long start = System.currentTimeMillis();*/
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+        XMLHandler handler = new XMLHandler();
+        parser.parse(new File(fileName), handler);
+        DBConnection.executeMultiInsert();
+        DBConnection.printVoterCounts();
 
-        //Printing results
-        System.out.println("Voting station work times: ");
-        for (Integer votingStation : voteStationWorkTimes.keySet()) {
-            WorkTime workTime = voteStationWorkTimes.get(votingStation);
-            System.out.println("\t" + votingStation + " - " + workTime);
-        }
-
-        System.out.println("Duplicated voters: ");
-        for (Voter voter : voterCounts.keySet()) {
-            Integer count = voterCounts.get(voter);
-            if (count > 1) {
-                System.out.println("\t" + voter + " - " + count);
-            }
-        }
+   /*     System.out.println(System.currentTimeMillis() - start);*/
     }
 
     private static void parseFile(String fileName) throws Exception {
@@ -44,8 +39,8 @@ public class Loader {
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document doc = db.parse(new File(fileName));
 
-        findEqualVoters(doc);
-        fixWorkTimes(doc);
+/*        findEqualVoters(doc);
+        fixWorkTimes(doc);*/
     }
 
     private static void findEqualVoters(Document doc) throws Exception {
@@ -56,13 +51,10 @@ public class Loader {
             NamedNodeMap attributes = node.getAttributes();
 
             String name = attributes.getNamedItem("name").getNodeValue();
-            Date birthDay = birthDayFormat
-                .parse(attributes.getNamedItem("birthDay").getNodeValue());
-
-            Voter voter = new Voter(name, birthDay);
-            Integer count = voterCounts.get(voter);
-            voterCounts.put(voter, count == null ? 1 : count + 1);
+            String birthDay = attributes.getNamedItem("birthDay").getNodeValue();
+            DBConnection.countVoter(name, birthDay);
         }
+        DBConnection.executeMultiInsert();
     }
 
     private static void fixWorkTimes(Document doc) throws Exception {

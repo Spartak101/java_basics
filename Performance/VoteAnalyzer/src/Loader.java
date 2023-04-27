@@ -23,7 +23,7 @@ public class Loader {
     public static void main(String[] args) throws Exception {
         String fileName = "res/data-1572M.xml";
 
-/*        long start = System.currentTimeMillis();*/
+        long start = System.currentTimeMillis();
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         XMLHandler handler = new XMLHandler();
@@ -31,7 +31,7 @@ public class Loader {
         DBConnection.executeMultiInsert();
         DBConnection.printVoterCounts();
 
-   /*     System.out.println(System.currentTimeMillis() - start);*/
+        System.out.println(System.currentTimeMillis() - start);
     }
 
     private static void parseFile(String fileName) throws Exception {

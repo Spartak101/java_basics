@@ -20,9 +20,7 @@ public class DBConnection {
                         "id INT NOT NULL AUTO_INCREMENT, " +
                         "name TINYTEXT NOT NULL, " +
                         "birthDate DATE NOT NULL, " +
-                        "`count` INT NOT NULL, " +
-                        "PRIMARY KEY(id), " +
-                        "UNIQUE KEY name_date(birthDate, name(50)))");
+                        "PRIMARY KEY(id))");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -32,9 +30,8 @@ public class DBConnection {
 
     public static void executeMultiInsert() throws SQLException {
         String sql =
-                "INSERT INTO voter_count(name, birthDate, `count`) " +
-                        "VALUES" + insertQuery.toString() +
-                        "ON DUPLICATE KEY UPDATE `count`=`count` + 1";
+                "INSERT INTO voter_count(name, birthDate) " +
+                        "VALUES" + insertQuery.toString();
         DBConnection.getConnection().createStatement().execute(sql);
         insertQuery.setLength(0);
     }
@@ -44,15 +41,19 @@ public class DBConnection {
 
 
         insertQuery.append((insertQuery.length() == 0 ? "" : ",") +
-                "('" + name + "','" + birthDay + "', 1)");
+                "('" + name + "','" + birthDay + "')");
     }
 
     public static void printVoterCounts() throws SQLException {
-        String sql = "SELECT name, birthDate, `count` FROM voter_count WHERE `count` > 1";
+        String sql = "SELECT name, birthDate, count(name) AS count_all\n" +
+                "FROM learn.voter_count\n" +
+                "group by name, birthDate\n" +
+                "HAVING count_all > 1\n" +
+                "order by count_all DESC";
         ResultSet rs = DBConnection.getConnection().createStatement().executeQuery(sql);
         while (rs.next()) {
             System.out.println("\t" + rs.getString("name") + " (" +
-                    rs.getString("birthDate") + ") - " + rs.getInt("count"));
+                    rs.getString("birthDate") + ") - " + rs.getInt("count_all"));
         }
         rs.close();
     }

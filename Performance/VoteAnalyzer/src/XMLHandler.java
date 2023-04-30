@@ -23,7 +23,8 @@ public class XMLHandler extends DefaultHandler {
         try {
             if (qName.equals("voter") && voter == null) {
                 String birthDay = attributes.getValue("birthDay");
-                DBConnection.countVoter(attributes.getValue("name"), String.valueOf(birthDay));
+                DBConnection.countVoter(attributes.getValue("name"), String.valueOf(birthDay),
+                        (attributes.getValue("name").hashCode() + String.valueOf(birthDay).hashCode()));
                 countIteration++;
             }
         } catch (SQLException ex) {

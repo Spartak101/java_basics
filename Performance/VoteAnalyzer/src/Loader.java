@@ -29,6 +29,7 @@ public class Loader {
         XMLHandler handler = new XMLHandler();
         parser.parse(new File(fileName), handler);
         DBConnection.executeMultiInsert();
+        System.out.println(System.currentTimeMillis() - start);
         DBConnection.printVoterCounts();
 
         System.out.println(System.currentTimeMillis() - start);
@@ -52,7 +53,8 @@ public class Loader {
 
             String name = attributes.getNamedItem("name").getNodeValue();
             String birthDay = attributes.getNamedItem("birthDay").getNodeValue();
-            DBConnection.countVoter(name, birthDay);
+            int hash = name.hashCode() + birthDay.hashCode();
+            DBConnection.countVoter(name, birthDay, hash);
         }
         DBConnection.executeMultiInsert();
     }
